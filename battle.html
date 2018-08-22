@@ -1,5 +1,10 @@
 <html>
 <head>
+    <!-- Bootstrap components -->
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
         <style>
     
     
@@ -25,25 +30,98 @@
                     .attackButton{
                         cursor: pointer;padding:5px 20px;font-size: 1em;background-color: white;
                     }
-                
+
+                      #playerStatusWindow {
+                        background-color: #146eff; /* For browsers that do not support gradients */
+    background-image: linear-gradient(#146eff, #000); /* Standard syntax (must be last) */
+                        border: 7px solid white;
+                        border-radius: 1em;
+                        padding:2em 3em;
+                        box-shadow: 5px 5px 15px rgba(128, 130, 126, 0.6);
+                        color:white;
+                        font-weight:bold;margin:1em;
+                    }
+                    #playerActionWindow {
+                        background-color: #146eff; /* For browsers that do not support gradients */
+    background-image: linear-gradient(#146eff, #000); /* Standard syntax (must be last) */
+                        border: 7px solid white;
+                        border-radius: 1em;
+                        padding:2em 3em;
+                        box-shadow: 5px 5px 15px rgba(128, 130, 126, 0.6);
+                        color:white;
+                        font-weight:bold;margin:1em;
+                    }
+                #lifeBar{
+                    background-color:#ef5353;
+                    width:100%;
+                    height: 1em;display: inline-block;
+                }
+                #userCurrentHp{
+                    display: inline-block;
+                }
                 
                 </style>
 </head>
 <body>
-<div id="statusWindow">
 
-<div id="userCurrentHp">
+    <!-- Container for menus -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 offset-1">
 
-</div>
 
-       <div id="encounter">
+                <div class="row">
 
-       </div>
+                     <div class="col">
+                         <div id="statusWindow">
+                       <div id="encounter"></div>
+                    </div>
+                    </div>
 
-        <button onclick="attack()" class="attackButton">Attack</button>
+
+                 </div>
+
+<!-- Player's life total here-->
+                <div class="row no-gutters">
+                        <div class="col-6">
+                            <div id="playerStatusWindow">
+
+                                <p>Warrior</p>
+                                    <div id="userCurrentHp"></div>
+                                    <div id="lifeBar"></div>
+                   
+                       </div>
+                       </div>
+
+
+                       <div class="col-6">
+                            <div id="playerActionWindow">
+                                        <button onclick="attack()" class="attackButton btn-block" >Attack</button>
+                                        <button onclick="attack()" class="attackButton btn-block">Spell</button>
+                                        <button onclick="attack()" class="attackButton btn-block">Item</button>
+                       
+                           </div>
+                       </div>
+                       </div>
+
+
+                 
+   
+   
+                    </div>
+      
+
+    </div>
   
 
-</div>
+
+        </div>
+
+
+
+    </div>
+
+
 </body>
 <script>
 
@@ -100,5 +178,13 @@ if (userLife < 1){
 
 
 
+
+
+
+
         </script>
+<!-- Bootstrap components-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </html>
