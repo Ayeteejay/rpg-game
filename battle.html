@@ -53,12 +53,16 @@
                     }
                 #lifeBar{
                     background-color:#ef5353;
-                    width:100%;
+                    width:20px;
+                    border-radius: 20px;
+                    border: 2px solid white;
                     height: 1em;display: inline-block;
                 }
                 #userCurrentHp{
                     display: inline-block;
                 }
+
+                
                 
                 </style>
 </head>
@@ -75,7 +79,8 @@
                      <div class="col">
                          <div id="statusWindow">
                        <div id="encounter"></div>
-                    </div>
+                       <dir id="monsterResponse"></dir>
+                        </div>
                     </div>
 
 
@@ -127,17 +132,21 @@
 
 //PC life
 let userLife = 20;
+let userMana = 20;
 
-let monsterLife = [10, 20, 30, 40, 50];
+let monsterLife = [30, 40, 50];
 let monsterName = ["Goblin","Zombie Knight","Ogre","Black Wizard","Dragon","Plague Rat","Goblin Warrior","Troll Shaman","Rock Golem","Dryad","Lich","Rogue","Fire Golem","Wyvern","Ice Elemental","Cyclops","Hydra","Shadow Demon","Skeleton Footman"];
 let monsterExp = [1,3,5,10];
 let monsterDescription = ["wild", "festering", "scraggly","evil"];
-let attackDescription = ["You swing and hit the", "You unleash a flurry of blows on the","You slash the","You bash into the","You swing a heavy strike at the"]
+let attackDescription = ["You swing and hit the", "You unleash a flurry of blows on the","You slash the","You bash into the","You swing a heavy strike at the"];
+let monsterAttackDescription = ["smashes into you", 'strikes with a heavy attack','attacks you with fury'];
 
 var monsterEncounterLife = monsterLife[Math.floor(Math.random() * monsterLife.length) ];
 var monsterEncounter = monsterName[Math.floor(Math.random() * monsterName.length)];
 var monsterDescriptionName = monsterDescription[Math.floor(Math.random() * monsterDescription.length)];
 var battleExp = monsterExp[Math.floor(Math.random() * monsterExp.length)];
+
+
 
 document.getElementById("encounter").innerHTML = `A ${monsterDescriptionName} ${monsterEncounter} approaches!`;
 
@@ -168,9 +177,16 @@ else if (damage > 7){
 
 //monster's attack
 function monsterAttack (){
-    var monsterDamage = Math.floor(Math.random() * 10);
+    var monsterDamage = Math.floor(Math.random() * 3);
     userLife = userLife - monsterDamage;
+    var monsterAttackDescriptionName = monsterAttackDescription[Math.floor(Math.random() * monsterAttackDescription.length)];
+    if (monsterDamage > 0 ){
+        document.getElementById('monsterResponse').innerHTML = `${monsterEncounter} ${monsterAttackDescriptionName}. You lose -${monsterDamage}HP`;
+       
 document.getElementById('userCurrentHp').innerHTML = `${userLife}HP`;
+    }
+
+
 if (userLife < 1){
     document.getElementById('userCurrentHp').innerHTML = `You died.`;
 }
