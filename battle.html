@@ -27,6 +27,9 @@
                     #encounter {
                         margin: 20px 0;
                     }
+                    #monsterDrop {
+                        margin: 20px 0;
+                    }
                     .attackButton{
                         cursor: pointer;padding:5px 20px;font-size: 1em;background-color: white;
                     }
@@ -79,8 +82,13 @@
                      <div class="col">
                          <div id="statusWindow">
                        <div id="encounter"></div>
-                       <dir id="monsterResponse"></dir>
+
+                       <div id="monsterDrop"></div>
+                    </div>
+
+                       <div id="monsterResponse"></dir>
                         </div>
+
                     </div>
 
 
@@ -137,7 +145,8 @@ let userMana = 20;
 let monsterLife = [30, 40, 50];
 let monsterName = ["Goblin","Zombie Knight","Ogre","Black Wizard","Dragon","Plague Rat","Goblin Warrior","Troll Shaman","Rock Golem","Dryad","Lich","Rogue","Fire Golem","Wyvern","Ice Elemental","Cyclops","Hydra","Shadow Demon","Skeleton Footman"];
 let monsterExp = [1,3,5,10];
-let monsterDescription = ["wild", "festering", "scraggly","evil"];
+
+let monsterDescription = ["large","dark","smelly","great","epic"];
 let attackDescription = ["You swing and hit the", "You unleash a flurry of blows on the","You slash the","You bash into the","You swing a heavy strike at the"];
 let monsterAttackDescription = ["smashes into you", 'strikes with a heavy attack','attacks you with fury'];
 
@@ -161,6 +170,7 @@ function attack() {
     monsterAttack();
     if (monsterEncounterLife < 1){
     document.getElementById("encounter").innerHTML = `${monsterEncounter} was defeated! You get +${battleExp} experience points.`;  
+    lootDrop();
 }
 else if (damage > 0 && damage < 8){
     //having variable attackDescriptionName in function instead of global makes it random each time function is called
@@ -194,6 +204,23 @@ if (userLife < 1){
 
 
 
+
+//add in loot drop function
+const lootDrop = () => {
+    let randomLootNumber = Math.floor(Math.random() * 5);
+    switch (randomLootNumber) {
+         case 1:
+         document.getElementById("monsterDrop").innerHTML = `${monsterEncounter} dropped 10 gold pieces.`;
+         break;
+        case 2:
+        document.getElementById("monsterDrop").innerHTML = `${monsterEncounter} dropped 20 gold pieces.`;
+        break;
+        case 3:
+        document.getElementById("monsterDrop").innerHTML = `${monsterEncounter} dropped 30 gold pieces.`;
+        default:
+        document.getElementById("monsterDrop").innerHTML = `${monsterEncounter} dropped 5 gold pieces.`;
+    }
+}
 
 
 
