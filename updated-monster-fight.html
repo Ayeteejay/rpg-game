@@ -1,0 +1,122 @@
+<html>
+<head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+<script>
+
+//random number function
+
+function randomNumber (maxNumber){
+    return Math.floor(Math.random() * maxNumber)+1;
+}
+
+//print to html
+function print(messageToPrint){
+    let outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = messageToPrint;
+}
+
+function printDocument(messageDocumentPrint){
+    document.write(messageDocumentPrint);
+}
+
+const projectOne = () => {
+
+
+//product names
+let product = {
+    name: "nintendo",
+    inventory: 5,
+    unit_price: 99.99
+};
+
+//adding to the inventory
+const addInventory = (productName, inventoryToAdd) => {
+  productName.inventory += inventoryToAdd;
+  console.log(inventoryToAdd + " " + product.name + " has been added to the total inventory of " + productName.inventory);
+}
+
+
+
+//subtracting inventory
+function processSale(productName, inventoryToSubtract){
+    productName.inventory -= inventoryToSubtract;
+    console.log("You have removed " + inventoryToSubtract + " from the overall product inventory of " + productName.inventory);
+}
+
+
+
+//monsters to fight
+let monsters = [
+    {
+        name: "goblin",
+        hitPoints: 10,
+        experiencePoints: 1,
+        quantity: 5,
+    },
+    {
+        name: "knight",
+        hitPoints: 20,
+        experiencePoints: 5,
+        quantity: 3,
+    },
+    {
+        name: "wizard",
+        hitPoints: 5,
+        experiencePoints: 10,
+        quantity: 1,
+    }
+]
+
+// how to calculate damage
+function damageMonster (monsterName, damageGiven){
+      let monsterId = monsterName.name;
+      switch(monsterId){
+          case "goblin":
+          printDocument("You encounter a Goblin!");
+          monsterName.hitPoints -= damageGiven;
+          printDocument(" Hit the Goblin for " + damageGiven + " damage. Now has " + monsterName.hitPoints + " remaining life.")
+          return monsterName.hitPoints;
+          break;
+          case "knight":
+          printDocument("You encounter a Knight!");
+          monsterName.hitPoints -= damageGiven;
+          printDocument(" Hit the Knight for " + damageGiven + " damage. Now has " + monsterName.hitPoints + " remaining life.")
+          return monsterName.hitPoints;
+          break;
+      }
+}
+
+damageMonster(monsters[1],10);
+
+//checks to see if monster still has HP. if not it dies.
+for(let x in monsters){
+    if(monsters[x].hitPoints < 1){
+        monsters[x].quantity-=1;
+        printDocument("<h3>"+monsters[x].name + " explodes into pieces!</h3>")
+    }
+}
+
+/*
+if ( monsters[0].hitPoints < 1){
+    printDocument(monsters[0].name + " explodes into pieces!")
+}
+*/
+
+}
+
+//run the function
+projectOne();
+
+
+
+
+</script>
+</html>
